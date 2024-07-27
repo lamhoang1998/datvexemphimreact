@@ -1,6 +1,11 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { changeSeatState, setSeatNames, setIsDone } from "./slices/seatSlice";
+import {
+	changeSeatState,
+	setSeatNames,
+	setIsDone,
+	setChosenSeat,
+} from "./slices/seatSlice";
 import { setIsClick } from "./slices/customerSlice";
 
 function Seat({ item }) {
@@ -23,6 +28,7 @@ function Seat({ item }) {
 				dispatch(changeSeatState(item));
 				dispatch(setSeatNames(item));
 			} else {
+				dispatch(setChosenSeat(seatNames));
 				dispatch(setIsDone());
 				isDifferentFromSelectedItem = false;
 				return;
